@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../utils/images.dart';
+
 import 'home.pgae.dart';
 import 'login.page.dart';
 
@@ -47,14 +47,14 @@ class _SplashPageState extends State<SplashPage> {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(ImagesPath.background), fit: BoxFit.cover)),
+                image: AssetImage("assets/images/background.jpg"), fit: BoxFit.cover)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image.asset(ImagesPath.baseHeader),
+                child: Image.asset("assets/images/base_header.png"),
               ),
               CircularProgressIndicator(),
             ],

@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.only(
                         left: 50, right: 50, top: 50, bottom: 25),
-                    child: Image.asset(ImagesPath.baseHeader),
+                    child: Image.asset("assets/images/background.jpg"),
                   ),
                   Text(
                     'Register',
