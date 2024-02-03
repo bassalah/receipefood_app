@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
     return OverlayKit(
       child: MaterialApp(
         title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: 'Hellix',
           inputDecorationTheme: InputDecorationTheme(

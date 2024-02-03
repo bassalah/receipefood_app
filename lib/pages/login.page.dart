@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:receipefood_app/pages/register.page.dart';
@@ -19,6 +20,8 @@ class _LoginPageState extends State<LoginPage> {
     Provider.of<AppAuthProvider>(context, listen: false).providerInit();
     super.initState();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +135,17 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 15,
                   ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                InkWell(
+                onTap:()  async{
+       var myemail="engineerooo43@gmail.com";
+       await FirebaseAuth.instance.sendPasswordResetEmail(email: myemail);
+
+                   },
+              child:   Container(child: Text('forget password', style: TextStyle(color: Colors.orange)))
+                  )
                 ],
               ),
             ),
