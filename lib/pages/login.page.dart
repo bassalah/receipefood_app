@@ -6,6 +6,7 @@ import '../provider/app_auth.provider.dart';
 import '../utils/colors.dart';
 import '../utils/images.dart';
 import '../widgets/widget_scrollable.widget.dart';
+import 'home.pgae.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,8 +21,6 @@ class _LoginPageState extends State<LoginPage> {
     Provider.of<AppAuthProvider>(context, listen: false).providerInit();
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -93,13 +92,13 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: () => authProvider.toggleObsecure(),
                           child: authProvider.obsecureText
                               ? Icon(
-                            Icons.visibility_off,
-                            color: Colors.white,
-                          )
+                                  Icons.visibility_off,
+                                  color: Colors.white,
+                                )
                               : Icon(
-                            Icons.visibility,
-                            color: Colors.white,
-                          ),
+                                  Icons.visibility,
+                                  color: Colors.white,
+                                ),
                         ),
                         focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white)),
@@ -123,29 +122,28 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           fixedSize: Size(400, 50),
                           backgroundColor: Color(ColorsConst.mainColor)),
-                      onPressed: () => authProvider.logIn(context),
-                      child:
-                      Text('Login', style: TextStyle(color: Colors.white))),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                InkWell(
-                onTap:()  async{
-       var myemail="engineerooo43@gmail.com";
-       await FirebaseAuth.instance.sendPasswordResetEmail(email: myemail);
+                      onPressed: () {
 
-                   },
-              child:   Container(child: Text('forget password', style: TextStyle(color: Colors.orange)))
-                  )
+                       Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (_) => HomePage()));
+                      },
+                      child:
+                          Text('Login', style: TextStyle(color: Colors.white))),
+                  InkWell(
+                      onTap: () async {
+                        var myemail = "engineerooo43@gmail.com";
+                        await FirebaseAuth.instance
+                            .sendPasswordResetEmail(email: myemail);
+                      },
+                      child: Container(
+                          child: Text('forget password',
+                              style: TextStyle(color: Colors.orange))))
                 ],
               ),
             ),

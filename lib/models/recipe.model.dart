@@ -31,6 +31,8 @@ class Recipe {
     type = data['type'];
   }
 
+  get favourite_users_ids => null;
+
   Map<String, dynamic> toJson() {
     return {
       "calories": calories,

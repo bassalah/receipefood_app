@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class drawerScreen extends StatefulWidget {
@@ -47,13 +48,23 @@ class _drawerScreenState extends State<drawerScreen> {
       _selectedIndex = index;
     });
   }
+  void updateUserInfo() {
+    var user = FirebaseAuth.instance.currentUser;
+    user?.updateProfile(displayName: "Abel", photoURL: "photoPath").then((value){
+      print("Profile has been changed successfully");
+      //DO Other compilation here if you want to like setting the state of the app
+    }).catchError((e){
+      print("There was an error updating profile");
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold( appBar: AppBar(
-      leading: CircleAvatar(backgroundImage: NetworkImage(""),),
+      leading: CircleAvatar(backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUYvpg87v8etLyXF_M2nv8Vle4fwzGrAi1EQ&usqp=CAU"),),
         title: Text("user.name"),
       actions: [
-        Icon(Icons.notification_add)
+        IconButton(onPressed: updateUserInfo , icon:
+        Icon(Icons.person))
       ],
     ),
 
@@ -146,6 +157,19 @@ class _drawerScreenState extends State<drawerScreen> {
               title: const Text('Sign out'),
               selected: _selectedIndex == 0,
               onTap: () {
+
+                _onItemTapped(0);
+
+                Navigator.pop(context);
+              },
+            ),
+
+            ListTile(
+              title: const Text('Home'),
+              selected: _selectedIndex == 0,
+              onTap: () {
+
+
 
                 _onItemTapped(0);
 

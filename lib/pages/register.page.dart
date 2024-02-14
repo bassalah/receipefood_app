@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/app_auth.provider.dart';
@@ -17,6 +18,8 @@ class _RegisterPageState extends State<RegisterPage> {
     Provider.of<AppAuthProvider>(context, listen: false).providerInit();
     super.initState();
   }
+
+  final auth=FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -129,6 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           backgroundColor: Color(ColorsConst.mainColor)),
                       onPressed: () {
                         authProvider.signUp(context);
+
                       },
                       child: Text('register',
                           style: TextStyle(color: Colors.white))),

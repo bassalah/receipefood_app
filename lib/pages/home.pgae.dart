@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:overlay_kit/overlay_kit.dart';
 import 'package:provider/provider.dart';
+import 'package:receipefood_app/pages/favouriteScreen.dart';
+import 'package:receipefood_app/pages/recentlyViewed.dart';
+import 'package:receipefood_app/settingScreen.dart';
 
 import '../models/recipe.model.dart';
 import '../provider/app_auth.provider.dart';
@@ -16,6 +19,9 @@ import '../services/meal.service.dart';
 import '../utils/numbers.dart';
 import '../widgets/ads_widget.dart';
 import '../widgets/section_header.dart';
+import 'about us.dart';
+import 'filter.dart';
+import 'help.dart';
 import 'ingredietnt.page.dart';
 
 
@@ -55,6 +61,15 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   controller.close?.call();
                   Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => HomePage()));
+                },
+                leading: Icon(Icons.food_bank),
+                title: Text('Home'),
+              ),
+              ListTile(
+                onTap: () {
+                  controller.close?.call();
+                  Navigator.push(context,
                       MaterialPageRoute(builder: (_) => IngredientPage()));
                 },
                 leading: Icon(Icons.food_bank),
@@ -67,7 +82,53 @@ class _HomePageState extends State<HomePage> {
                 },
                 leading: Icon(Icons.logout),
                 title: Text('Logout'),
-              )
+              ),
+              ListTile(
+                onTap: () {
+                  controller.close?.call();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => favouriteScreen()));
+                },
+                leading: Icon(Icons.food_bank),
+                title: Text('Favourites'),
+              ),
+              ListTile(
+                onTap: () {
+                  controller.close?.call();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => recentlyViewed()));
+                },
+                leading: Icon(Icons.food_bank),
+                title: Text('RecentlyViewed'),
+              ),
+              ListTile(
+                onTap: () {
+                  controller.close?.call();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => settings()));
+                },
+                leading: Icon(Icons.food_bank),
+                title: Text('settings' ),
+              ),
+              ListTile(
+                onTap: () {
+                  controller.close?.call();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => help()));
+                },
+                leading: Icon(Icons.help),
+                title: Text('help'),
+              ),
+              ListTile(
+                onTap: () {
+                  controller.close?.call();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => aboutUs()));
+                },
+                leading: Icon(Icons.food_bank_outlined),
+                title: Text('about us'),
+              ),
+
             ],
           ),
         ),
@@ -96,6 +157,22 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 AdsWidget(),
+                Text("What would you like to eat today",style: TextStyle(fontSize: 25),),
+                Row(
+                  children: [
+                    TextField(
+
+                      decoration: InputDecoration(
+                        labelText: 'Search',
+                        border: OutlineInputBorder(),
+                        prefixIcon: Icon(Icons.search),
+                      ),
+                    ),
+                    IconButton(onPressed: (){ Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => filter()));},
+                        icon: Icon(Icons.filter)),
+                  ],
+                ),
                 SectionHeader(sectionName: 'Today\'s Fresh Recipes'),
 
                 SizedBox(

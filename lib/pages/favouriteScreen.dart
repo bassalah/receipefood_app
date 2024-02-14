@@ -7,10 +7,12 @@ class favouriteScreen extends StatefulWidget {
   State<favouriteScreen> createState() => _favouriteScreenState();
 }
 
-class _favouriteScreenState extends State<favouriteScreen> {
+ class _favouriteScreenState extends State<favouriteScreen> {
 
 
   List<String> searchResults = [];
+
+  get data => null;
 
   void onQueryChanged(String query) {
     setState(() {
@@ -26,38 +28,46 @@ class _favouriteScreenState extends State<favouriteScreen> {
         query = newQuery;
       });
     }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Favourites '),
-      ),
-      body:
+    @override
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+          appBar: AppBar(
+            title: Text('Favourites '),
+          ),
+          body:
 
-      Column(
-        children: [
-      Container(
-      padding: EdgeInsets.all(16),
-      child: TextField(
-        onChanged: onQueryChanged,
-        decoration: InputDecoration(
-          labelText: 'Search',
-          border: OutlineInputBorder(),
-          prefixIcon:
-          onPressed(){{}Icon(Icons.search),
-        ),
-      ),
-    ),
-      Expanded(
-      child: ListView.builder(
-      itemCount: searchResults.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(searchResults[index]),
-        );
-      },
-    ))
-    ])
-    );
+          Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(16),
+                  child: TextField(
+                    onChanged: onQueryChanged,
+                    decoration: InputDecoration(
+
+
+                      border: OutlineInputBorder(),
+                      prefixIcon:
+                      Icon(Icons.search),
+                      labelText: 'Search',
+
+
+                    ),
+                  ),
+                ),
+                Expanded(
+                    child: ListView.builder(
+                      itemCount: searchResults.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(searchResults[index]),
+                        );
+                      },
+                    ))
+              ])
+      );
+    }
   }
-}
+
+
+

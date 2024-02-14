@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'home.pgae.dart';
 import 'login.page.dart';
+import 'register.page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -57,6 +58,18 @@ class _SplashPageState extends State<SplashPage> {
                 child: Image.asset("assets/images/base_header.png"),
               ),
               CircularProgressIndicator(),
+              ElevatedButton(onPressed: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) =>LoginPage()));
+              }, child: Text("login")),
+              ElevatedButton(onPressed: (){
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) =>  RegisterPage()));
+              }, child: Text("register"))
             ],
           ),
         ),

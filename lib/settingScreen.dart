@@ -9,8 +9,9 @@ class settings extends StatefulWidget {
 }
 
 class _settingsState extends State<settings> {
+  @override
 
-}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,26 +60,51 @@ class _settingsState extends State<settings> {
 
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Icon(Icons.notifications),
-                      Text("push notification",style: TextStyle(fontSize: 20),),
-                      SizedBox(width: 150,),
-                      SwitchExample(),
+
+                  Container(
+                    width: double.infinity,
+                    color: Colors.grey,
+                    child: Row(
+
+                      children: [
+                        Icon(Icons.person),
+                        Text("update profile",style: TextStyle(fontSize: 20),),
+                        SizedBox(width: 150,),
+                        SwitchExample(),
 
 
-                    ],
+                      ],
+                    ),
+                  ),
+                  Spacer(),
+                  Container(
+                    width: double.infinity,
+                    color: Colors.grey,
+                    child: Row(
+                      children: [
+                        Icon(Icons.notifications),
+                        Text("push notification",style: TextStyle(fontSize: 20),),
+                        SizedBox(width: 150,),
+                        SwitchExample(),
+
+
+                      ],
+                    ),
                   ),
 
               Spacer(),
-              Row(
-                children: [
-                  Icon(Icons.email),
-                  Text("email notification",style: TextStyle(fontSize: 20),),
-                  SizedBox(width: 150,),
-                  SwitchExample(),
+              Container(
+                width: double.infinity,
+                color: Colors.grey,
+                child: Row(
+                  children: [
+                    Icon(Icons.email),
+                    Text("email notification",style: TextStyle(fontSize: 20),),
+                    SizedBox(width: 150,),
+                    SwitchExample(),
 
-                ],
+                  ],
+                ),
               ),
                 ],
               ),

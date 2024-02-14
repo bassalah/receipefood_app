@@ -30,7 +30,7 @@ class _SearchBarState extends State<SearchBar> {
     );
   }
 }
-class _SearchScreenState extends State<SearchScreen> {
+class SearchScreen extends State<SearchBar> {
   List<String> data = [
     'Apple',
     'Banana',
@@ -62,7 +62,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: Column(
         children: [
-          SearchBar(onQueryChanged: onQueryChanged),
+         // SearchBar(onQueryChanged: onQueryChanged),
           Expanded(
             child: ListView.builder(
               itemCount: searchResults.length,
@@ -105,39 +105,3 @@ class _SearchScreenState extends State<SearchScreen> {
 
 
 
-
-class search extends StatefulWidget {
-  const search({super.key});
-
-  @override
-  State<search> createState() => _searchState();
-}
-
-class _searchState extends State<search> {
-
-  List<String> searchResults = [
-    "rice",
-    "pasta",
-    "pane",
-    "bancha"
-  ];
-
-  void onQueryChanged(String query) {
-    setState(() {
-      searchResults = data
-          .where((item) => item.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-    });
-
-    String query = '';
-
-    void onQueryChanged(String newQuery) {
-      setState(() {
-        query = newQuery;
-      });
-    }
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
